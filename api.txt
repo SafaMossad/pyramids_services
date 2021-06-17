@@ -1,0 +1,18 @@
+https://pyramid-services.herokuapp.com//api/v1/sessions 
+{
+		"email": "hamma2da@gmail.com",
+		"password": "123456"
+       
+	}
+
+https://pyramid-services.herokuapp.com//api/v1/users
+
+{
+	"user":
+	{
+		"email": "hamma2da@gmail.com",
+		"password": "123456",
+		"password_confirmation": "123456",
+        "phone": "015648495"
+	}
+}
