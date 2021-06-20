@@ -16,6 +16,9 @@ class SuggestionProvider with ChangeNotifier {
   List<SuggestionsModel> get allSuggestions {
     return [..._allSuggestions];
   }*/
+  final String authToken;
+  final String userId;
+  SuggestionProvider(this.authToken, this.userId,);
 
   Future<void> addSuggestion(String description) async {
 //_items.clear();
@@ -28,6 +31,8 @@ class SuggestionProvider with ChangeNotifier {
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
+            'Authorization': '$authToken'
+
           },
           body: body);
       print(json.decode(response.body));

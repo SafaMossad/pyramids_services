@@ -9,9 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ReviewProvider with ChangeNotifier {
-
+  final String authToken;
+  final String userId;
   List<AllReviewsModel> _allReviews = [];
-
+  ReviewProvider(this.authToken, this.userId, this._allReviews);
 
   List<AllReviewsModel> get allReviews {
     return [..._allReviews];
@@ -30,6 +31,8 @@ class ReviewProvider with ChangeNotifier {
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
+            'Authorization': '$authToken'
+
           },
           body: body);
       print(json.decode(response.body));
@@ -59,10 +62,12 @@ class ReviewProvider with ChangeNotifier {
       extractedData.forEach((reviewData) {
         loadedProducts.add(AllReviewsModel(
           id: reviewData["id"],
-          /*name:,*/
-          description: reviewData["description"], /*userId:,*/
+          name:reviewData["user"]["name"].toString(),
+          description: reviewData["description"],
+          userId:reviewData["user_id"].toString(),
         ));
       });
+      print(" testgasjdhahjas hahahhhahaha${extractedData[0]["user"]["name"]}");
       _allReviews = loadedProducts;
       notifyListeners();
     } catch (error) {

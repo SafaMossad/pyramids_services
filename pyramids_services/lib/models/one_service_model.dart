@@ -6,9 +6,8 @@ class OneServiceModel with ChangeNotifier {
   final String description;
   final String index;
   final String image;
-  /*final int orders;
-  final String image;
-  final int evaluation;*/
+  final String xDirection;
+  final String yDirection;
 
   OneServiceModel({
     @required this.id,
@@ -16,8 +15,8 @@ class OneServiceModel with ChangeNotifier {
     @required this.description,
     @required this.index,
     @required this.image,
-    /*@required this.orders,
-    @required this.evaluation,
-    @required this.image,*/
+    @required this.xDirection,
+    @required this.yDirection,
+
   });
 }

@@ -10,13 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ReportsProvider with ChangeNotifier {
+  final String authToken;
+  final String userId;
 
-  final List<ReportModel> _allReport = [];
+  ReportsProvider(this.authToken, this.userId,);
 
 
-  List<ReportModel> get allReport {
-    return [..._allReport];
-  }
+
 
   Future<void> addReport(String description) async {
 //_items.clear();
@@ -31,6 +31,8 @@ class ReportsProvider with ChangeNotifier {
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
+            'Authorization': '$authToken'
+
           },
           body: body);
       print(json.decode(response.body));

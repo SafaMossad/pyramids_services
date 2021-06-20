@@ -11,7 +11,6 @@ import '../../../moduels/tour_guide_screen.dart';
 
 import '../../../models/category_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../components.dart';
@@ -52,36 +51,25 @@ class CategoryItem extends StatelessWidget {
             ),
             defaultButton(
               function: () {
-                if (index == 0) {
-                  navigateTo(context, AllServices());
-                } else if (index == 1) {
+                if (index == 0)
+                {
+                navigateTo(context, AllServices());
+                } else
+                  if (index == 1) {
                   navigateTo(context, LanguagesScreen());
                 } else if (index == 3) {
                   navigateTo(context, ReviewsScreen());
-                  //ReportScreen
-
                 } else if (index == 4) {
-                  navigateTo(
-                    context,
-                    ParCodeScreen(),
-                  );
+                  navigateTo(context, ParCodeScreen());
                 } else if (index == 5) {
-                  navigateTo(
-                    context,
-                    ReportScreen(),
-                  );
-                }
-                else if (index == 6) {
+                  navigateTo(context, ReportScreen());
+                } else if (index == 6) {
                   navigateTo(
                     context,
                     SuggestionScreen(),
                   );
-                }
-                else if (index == 8) {
-                  navigateTo(
-                    context,
-                    ShowGroupOnMap(),
-                  );
+                } else if (index == 7) {
+                  navigateTo(context, ShowGroupOnMap(),);
                 }
               },
               context: context,
@@ -89,9 +77,14 @@ class CategoryItem extends StatelessWidget {
               radius: 8.0,
               fontSize: 13.0,
               textColor: Colors.black,
-              width: 150,isUpperCase:true,
-              borderColor: Theme.of(context).primaryColor,
-              background: Theme.of(context).accentColor,
+              width: 150,
+              isUpperCase: true,
+              borderColor: Theme
+                  .of(context)
+                  .primaryColor,
+              background: Theme
+                  .of(context)
+                  .accentColor,
             ),
           ],
         ),

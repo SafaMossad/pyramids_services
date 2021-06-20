@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pyramidsservices">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="pyramidsservices"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Pyramids Services"
+        android:icon="@mipmap/trur">
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyD_mgoFaZjYIbfdftBTRUJEqerod9ImWeU"/>
         <activity

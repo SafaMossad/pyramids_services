@@ -5,7 +5,6 @@ import '../../../moduels/tour_guide_screen.dart';
 
 import '../../../models/category_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../components.dart';
@@ -54,7 +53,7 @@ class LanguagesItem extends StatelessWidget {
                   context: context,
                   text: categories.title,
                   radius: 8.0,
-                  fontSize: 16.0,
+                  fontSize: 13.0,
                   textColor: Colors.black,
                   width: 150,
                   borderColor: Theme.of(context).primaryColor,

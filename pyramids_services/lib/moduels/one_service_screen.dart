@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:pyramidsservices/models/one_service_model.dart';
-import 'package:pyramidsservices/models/service_model.dart';
-import 'package:pyramidsservices/moduels/show_on_map.dart';
-import 'package:pyramidsservices/provider/one_service.dart';
-import 'package:pyramidsservices/shared/components/components.dart';
+import '../models/one_service_model.dart';
+import '../moduels/show_on_map.dart';
+import '../provider/one_service.dart';
+import '../shared/components/components.dart';
 
 class OneService extends StatefulWidget {
-  int index;
-  String title;
+  final int index;
+  final String title;
 
   OneService({this.index, this.title});
 
@@ -43,24 +42,25 @@ class _OneServiceState extends State<OneService> {
             } else {
               if (snapshot.hasError) {
                 print("error snap  error ${snapshot.error}");
-                return Center(
-                  child: Text('An error occurred!'),
-                );
+                return SnackBar(content: Text("error"));
               } else {
                 print("success $snapshot");
                 return Consumer<OneServiceProvider>(
                   builder: (ctx, oneServiceData, child) =>
                       SingleChildScrollView(
-                          child: oneServiceData.items.length <= 1
-                              ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Center(
-                                      child: Text(
-                                          "There Is no Services Please Add Some"),
-                                    ),
-                                ],
-                              )
+                          child: oneServiceData.items.length <= 0
+                              ? Padding(
+                                  padding: const EdgeInsets.only(top: 350.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                            "There Is no Services Please Add Some"),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               : Container(
                                   child: Column(children: [
                                     ListView.separated(
@@ -80,21 +80,7 @@ class _OneServiceState extends State<OneService> {
                 );
               }
             }
-          }), /*SingleChildScrollView(
-        child: Container(
-          child: Column(children: [
-            ListView.separated(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => ServiseItem(),
-              itemCount: 10,
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10.0,
-              ),
-            )
-          ]),
-        ),
-      ),*/
+          }),
     );
   }
 }
@@ -127,7 +113,7 @@ Widget serviceItem(context, OneServiceModel service) {
               overflow: TextOverflow.ellipsis,
               textDirection: TextDirection.ltr,
             ),
-            //if (service.image != '')
+            if (service.image != '')
             Padding(
               padding: const EdgeInsetsDirectional.only(top: 15.0),
               child: Container(
@@ -151,7 +137,16 @@ Widget serviceItem(context, OneServiceModel service) {
             ),
             InkWell(
               onTap: () {
-                navigateTo(context, ShowOnMap());
+                navigateTo(
+                    context,
+                    ShowOnMap(
+                      xDirection: double.parse(
+                        service.xDirection,
+                      ),
+                      yDirection: double.parse(
+                        service.yDirection,
+                      ),
+                    ));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +164,7 @@ Widget serviceItem(context, OneServiceModel service) {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

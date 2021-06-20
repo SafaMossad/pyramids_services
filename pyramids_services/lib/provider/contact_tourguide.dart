@@ -31,6 +31,7 @@ class ContactTourGuideProvider with ChangeNotifier {
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
+            'Authorization': '$authToken'
           },
           body: body);
       print(json.decode(response.body));

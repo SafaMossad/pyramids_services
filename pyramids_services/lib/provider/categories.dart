@@ -39,15 +39,15 @@ class Categories with ChangeNotifier {
       title: "Suggestion ",
       image: 'assets/suggestion.png',
     ),
-    CategoriesModel(
+    /*CategoriesModel(
       id: 8,
-      title: "Pyramids 3D ",
+      title: "Bazar & Store",
       image: 'assets/3d.png',
-    ),
+    ),*/
     CategoriesModel(
       id: 9,
       title: "Save Your Group ",
-      image: 'assets/suggestion.png',
+      image: 'assets/savegroub.png',
     ),
 
   ];

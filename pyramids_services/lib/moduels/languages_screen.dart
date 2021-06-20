@@ -14,7 +14,6 @@ class LanguagesScreen extends StatelessWidget {
     final languagesData = Provider.of<Languages>(context);
     final languages = languagesData.items;
     return Scaffold(
-      drawer: Drawer(),
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Text(

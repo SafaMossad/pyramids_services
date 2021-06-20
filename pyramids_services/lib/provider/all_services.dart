@@ -18,8 +18,8 @@ class AllServicesData with ChangeNotifier {
     ),
     AllServicesModel(
       id: 3,
-      title: "Hostels",
-      image: 'assets/services/hostel.png',
+      title: "Hotel",
+      image: 'assets/services/hotel.png',
     ),
     AllServicesModel(
       id: 4,
@@ -31,13 +31,16 @@ class AllServicesData with ChangeNotifier {
       title: "ATM",
       image: 'assets/services/atm.png',
     ),
-
     AllServicesModel(
-      id: 9,
+      id: 6,
+      title: "Bazar",
+      image: 'assets/services/bazar.png',
+    ),
+    AllServicesModel(
+      id: 7,
       title: "Houses of Worship",
       image: 'assets/services/mosq.png',
     ),
-
   ];
 
   List<AllServicesModel> get items {

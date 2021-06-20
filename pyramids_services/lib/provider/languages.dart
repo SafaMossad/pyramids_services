@@ -34,8 +34,26 @@ class Languages with ChangeNotifier {
       title: "Italy",
       image: 'https://image.flaticon.com/icons/png/512/323/323325.png',
     ),
-
-
+    LanguagesModel(
+      id: 6,
+      title: "Turki",
+      image: 'https://image.flaticon.com/icons/png/512/197/197518.png',
+    ),
+    LanguagesModel(
+      id: 6,
+      title: "Korean",
+      image: 'https://image.flaticon.com/icons/png/512/197/197582.png',
+    ),
+    LanguagesModel(
+      id: 6,
+      title: "Chinese",
+      image: 'https://image.flaticon.com/icons/png/512/197/197375.png',
+    ),
+    LanguagesModel(
+      id: 6,
+      title: "Portuguese",
+      image: 'https://image.flaticon.com/icons/png/512/197/197463.png',
+    ),
   ];
 
   List<LanguagesModel> get items {

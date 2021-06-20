@@ -12,10 +12,8 @@ class ReviewsScreen extends StatefulWidget {
 }
 
 class _ReviewsScreenState extends State<ReviewsScreen> {
-  final String imageLink =
-      "https://images.unsplash.com/photo-1505798577917-a65157d3320a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80";
-
   final TextEditingController _reviewController = TextEditingController();
+  final TextEditingController _commentController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
@@ -54,9 +52,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
       await Provider.of<ReviewProvider>(context, listen: false)
           .addReview(_reviewController.text);
       _showErrorDialog("Review Sent Successfully");
-    }
-
-    catch (error) {
+    } catch (error) {
       print("messsssage $error");
 
       const errorMessage =
@@ -127,10 +123,8 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                     ? CircularProgressIndicator()
                     : defaultButton(
                         function: () {
-                          setState(() {
-                            _submit();
-                            _reviewController.clear();
-                          });
+                          _submit();
+                          _reviewController.clear();
                         },
                         context: context,
                         text: "Send Your Review",
@@ -154,7 +148,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                 SizedBox(
                   height: 15.0,
                 ),
-                FutureBuilder(
+                 FutureBuilder(
                     future: Provider.of<ReviewProvider>(context, listen: false)
                         .fetchAllReviews(),
                     builder: (context, snapshot) {
@@ -218,16 +212,16 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                   child: CircleAvatar(
                     radius: 27,
                     backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(imageLink),
+                    backgroundImage: AssetImage("assets/logo.png"),
                   ),
                 ),
                 SizedBox(
-                  width: 15.0,
+                  width: 5.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    "${model.id}",
+                    "${model.name}",
                     style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
@@ -243,10 +237,10 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
             ),
           ),
           SizedBox(
-            height: 15.0,
+            height: 5.0,
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10.0, left: 15.0),
+            padding: const EdgeInsets.only(right: 10.0, left: 15.0),
             child: Text(
               "${model.description}",
               style: TextStyle(
@@ -258,6 +252,21 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               textDirection: TextDirection.ltr,
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  icon: Icon(
+                   Icons.favorite_border,
+                    color: Colors.red,
+                  ),
+                ),
+              Expanded(
+                  child: Container(
+                child: Text("write a comment ..."),
+              )),
+            ],
+          )
         ],
       ),
     );
